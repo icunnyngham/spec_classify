@@ -1,0 +1,29 @@
+<!-- x: {{ extr.pos_x__max }}<br />
+y: {{ extr.pos_y__max }}<br />
+max: {{ extr.val_max }}<br />
+min: {{ extr.val_min }}<br />
+!-->
+
+<table border=0 cellpadding=5 cellspacing=0>
+<tr><td rowspan=2>
+<table border=0 cellpadding=10 cellspacing=0>
+{% for row in grid %}
+<tr>
+  {% for m in row %}
+  <td bgcolor="{{m.val_color}}" onMouseOver="updateStatBox('{{m.pos_x}}','{{m.pos_y}}','{{m.val}}')"><div></div></td>
+  {% endfor %}
+</tr>
+{% endfor %}
+</table>
+</td><td><B>Legend:</B></td>
+</tr><tr>
+<td align=right>
+<table border=0 cellpadding=10 cellspacing=0>
+{% for l in leg %}
+<tr>
+  <td>{{l.val}}</td>
+  <td bgcolor="{{l.color}}"><div></div></td>
+</tr>
+{% endfor %}
+</table>
+</td></tr></table>

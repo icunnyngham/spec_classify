@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Spec Classify - Browser</title>
+<script type="text/javascript"
+    src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js"></script>
+</head>
+
+<body>
+
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function filterObj()
+{
+  if ( $('obj_sel').value != "None")
+  {
+    $('obs_details').innerHTML = "";
+    new Ajax.Updater('filelist', '/browse/fmenu/', {
+      method:'post', 
+  	  parameters:{obj: $('obj_sel').value}
+  	  });
+	}
+}
+function filterFile()
+{
+  if ( $('f_sel').value != "None")
+  {
+    new Ajax.Updater('obs_details', '/browse/obs_detail/', {
+      method:'post', 
+  	  parameters:{file: $('f_sel').value}
+	  });
+  }
+}
+function getWPlot()
+{
+  if ( $('w_sel').value != "None")
+  {
+    new Ajax.Updater('wave_plot', '/browse/wave_plot/', {
+      method:'post', 
+  	  parameters:{obj_id: $('o_id').value, m_type: $('m_type_sel').value, wave_id: $('w_sel').value}
+	  });
+  }
+}
+function updateStatBox(x, y, val)
+{
+	$('pos_x').innerHTML="<b>X:</b> " + x;
+	$('pos_y').innerHTML="<b>Y:</b> " + y;
+	$('val_status').innerHTML="<b>Val:</b> " + val;
+}
+
+//-->
+</script>
+
+<H2>Cube Measurement Browser</H2>
+
+<select id="obj_sel" onChange="filterObj()">
+<option value="None">--- Pick Object ---</option>
+{% for obj in object_list %}
+<option value="{{ obj }}">{{ obj }}</option>
+{% endfor %}
+</select>
+<br />
+<div id="filelist"></div>
+<br />
+<div id="obs_details"></div>
+
+</body>
+</html>

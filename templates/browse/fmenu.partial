@@ -1,0 +1,7 @@
+<select id="f_sel" onChange="filterFile()">
+<option value="None">--- Select Cube ---</option>
+{% for file in file_list %}
+<option value="{{ file }}">{{ file }}</option>
+{% endfor %}
+</select>
+

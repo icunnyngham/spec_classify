@@ -1,0 +1,42 @@
+<form><input type="hidden" id="o_id" name="o_id" value="{{obs.oid}}" /></form>
+<table border=0 cellspacing=0 cellpadding=0><tr><td bgcolor="#000000"><table border=0 cellspacing=2 cellpadding=4>
+<tr bgcolor="#ffffff">
+  <td><b>Object Name :</b>{{obs.obj_name}}</td>
+  <td><b>Filename :</b>{{obs.filename}}</td>
+  <td rowspan=7 colspan=3><div id='wave_plot'></div></td>
+</tr><tr bgcolor="#dddddd">
+  <td><b>RA :</b>{{ obs.ra }} </td>
+  <td><b>DEC :</b>{{ obs.dec }} </td>
+</tr><tr bgcolor="#ffffff">
+  <td><b>Redshift (z) :</b>{{obs.redshift}}</td>
+  <td><b>Observed on :</b>{{obs.obs_date}}</td>
+</tr><tr bgcolor="#dddddd">
+  <td><b>Distance :</b>{{ obs.distance}}</td>
+  <td><b>Distance Std Dev. :</b>{{obs.dist_std}}</td>
+</tr><tr bgcolor="#ffffff">
+  <td><b>Exposure Time :</b>{{ obs.exptime }}</td>
+  <td><b>Airmas :</b>{{ obs.airmass }}</td>
+</tr><tr bgcolor="#dddddd">
+  <td colspan=2><b>Sky Subtraction Info :</b>{{ obs.sky_info }}</td>
+</tr><tr bgcolor="#ffffff">
+  <td colspan=2 align=right>View 
+<select id='m_type_sel' onChange='getWPlot()'>
+  <option value="flux">Flux</option>
+  <option value="eqw">Equal Width</option>
+  <option value="fwhm">Full Width Half Max</option>
+</select>
+of:
+<select id='w_sel' onChange='getWPlot()'>
+  <option value="None">--- Select Wavelength ---</option>
+{% for w in w_list %}
+  <option value="{{ w.wid }}">{{ w.name }}</option>
+{% endfor %}
+</select>
+</td>
+</tr><tr bgcolor="#ffffff">
+<td colspan=2 bgcolor="#000000"></td>
+<td width="40"><div id="pos_x"></div></td>
+<td width="40"><div id="pos_y"></div></td>
+<td><div id="val_status"></div></td>
+</tr>
+</table></td></tr></table>
